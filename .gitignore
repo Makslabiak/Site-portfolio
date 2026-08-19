@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Редакторы
+.vscode/
+.idea/
+
+# Зависимости
+node_modules/
+
+# Локальные копии и черновики
+annotator-tool*/
+image/_unused/
+
+# Тяжёлые файлы, не нужные сайту
+*.pdf
