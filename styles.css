@@ -257,3 +257,9 @@ html.examples-open,html.examples-open body{overflow:hidden}.examples-popup{posit
 
 /* Temporarily hidden; markup is preserved */
 .service-row--featured .service-button:not(.service-button--primary){display:none}
+
+@media(max-width:800px){
+  .services .service-row{grid-template-columns:1fr;gap:12px}
+  .services .service-row>span,.services .service-row>h3,.services .service-row>p,.services .service-row>.service-row__content{grid-column:1}
+  .services .service-row>span{align-self:auto;padding-top:0}
+}
