@@ -10,10 +10,14 @@ if (serviceOrderButton) {
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
 if (menuToggle && mobileMenu) {
+  mobileMenu.setAttribute('aria-hidden', 'true');
+
   function setMenu(open) {
     document.documentElement.classList.toggle('menu-open', open);
+    document.querySelector('.nav')?.classList.remove('header-hidden');
     menuToggle.classList.toggle('is-open', open);
     mobileMenu.classList.toggle('is-open', open);
+    mobileMenu.setAttribute('aria-hidden', String(!open));
     menuToggle.setAttribute('aria-expanded', String(open));
     menuToggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
   }
@@ -22,6 +26,9 @@ if (menuToggle && mobileMenu) {
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') setMenu(false);
   });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 800 && mobileMenu.classList.contains('is-open')) setMenu(false);
+  }, { passive: true });
 }
 
 const faqItems = document.querySelectorAll('.faq-item');
@@ -64,15 +71,16 @@ const projectGrid = document.querySelector('.projects');
 if (projectGrid) {
   projectGrid.innerHTML = projects.map(([caseUrl, siteUrl, image, title]) => `
     <div class="project">
+      <h3 class="project-title-mobile"><a href="${caseUrl}">${title}</a></h3>
       <a href="${caseUrl}" aria-label="Открыть кейс ${title}"><div class="project-art real-art"><img src="${image}" alt="${title}" loading="lazy" decoding="async"></div></a>
-      <div class="meta"><h3><a href="${caseUrl}">${title}</a></h3><a class="project-link" href="${siteUrl}" target="_blank" rel="noopener noreferrer">Смотреть сайт <span>↗</span></a></div>
+      <div class="meta"><h3><a href="${caseUrl}">${title}</a></h3><a class="project-case-link" href="${caseUrl}">Разбор кейса <span>&#x2197;&#xFE0E;</span></a><a class="project-link" href="${siteUrl}" target="_blank" rel="noopener noreferrer">Смотреть сайт <span>&#x2197;&#xFE0E;</span></a></div>
     </div>`).join('');
   projectGrid.querySelectorAll('.project').forEach((element) => observer.observe(element));
 
   if (window.matchMedia('(pointer: fine)').matches) {
     const projectCursor = document.createElement('div');
     projectCursor.className = 'project-cursor';
-    projectCursor.innerHTML = '<span class="project-cursor__icon">↗</span><span class="project-cursor__label">разбор сайта</span>';
+    projectCursor.innerHTML = '<span class="project-cursor__icon">&#x2197;&#xFE0E;</span><span class="project-cursor__label">разбор кейса</span>';
     projectCursor.style.left = '-200px';
     projectCursor.style.top = '-200px';
     document.body.appendChild(projectCursor);
@@ -103,7 +111,7 @@ if (examplesTrigger) {
       <div class="examples-popup__items">
         ${exampleProjects.map(([, , , title], index) => `
           <button class="examples-popup__item" type="button" data-example-index="${index}">
-            <span>${String(index + 1).padStart(2, '0')}</span><strong>${title}</strong><i>↗</i>
+            <span>${String(index + 1).padStart(2, '0')}</span><strong>${title}</strong><i>&#x2197;&#xFE0E;</i>
           </button>`).join('')}
       </div>
     </div>
@@ -207,7 +215,7 @@ function startHomeMotion() {
   progress.className = 'home-progress';
   document.body.appendChild(progress);
 
-  const motionSections = [...document.querySelectorAll('.about, .services, .play, footer')];
+  const motionSections = [...document.querySelectorAll('.work, .about, .services, .play, footer')];
   motionSections.forEach((section) => section.classList.add('home-reveal'));
 
   const motionObserver = new IntersectionObserver((entries) => {
