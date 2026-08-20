@@ -98,3 +98,4 @@ body,main{background:var(--paper)}
 .motion-ready .next-photo{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.22,1,.36,1) .12s,transform .8s cubic-bezier(.22,1,.36,1) .12s}
 .motion-ready .next.is-visible .next-photo{opacity:1;transform:none}
 @media(max-width:780px){.next-photo{position:static;top:auto;right:auto;bottom:auto;left:auto;width:100%;aspect-ratio:16/9;margin:22px 0 0}.next-photo img{border-radius:10px;box-shadow:0 16px 26px rgba(0,0,0,.2)}}
+.next-case-cursor{z-index:1002;width:150px}

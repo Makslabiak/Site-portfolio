@@ -29,6 +29,21 @@
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   document.documentElement.classList.add('motion-ready');
 
+  const nextCase = document.querySelector('.next');
+  if (nextCase && window.matchMedia('(pointer: fine)').matches) {
+    const nextCursor = document.createElement('div');
+    nextCursor.className = 'project-cursor next-case-cursor';
+    nextCursor.innerHTML = '<span class="project-cursor__icon">↗</span>';
+    document.body.appendChild(nextCursor);
+
+    nextCase.addEventListener('pointermove', (event) => {
+      nextCursor.style.left = `${event.clientX}px`;
+      nextCursor.style.top = `${event.clientY}px`;
+      nextCursor.classList.add('is-visible');
+    });
+    nextCase.addEventListener('pointerleave', () => nextCursor.classList.remove('is-visible'));
+  }
+
   const progress = document.createElement('div');
   progress.className = 'scroll-progress';
   document.body.appendChild(progress);

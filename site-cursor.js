@@ -60,7 +60,7 @@
     if (!visible) setVisible(true);
     startRender();
     const target = event.target instanceof Element ? event.target : null;
-    const overProject = Boolean(target && target.closest('.real-art'));
+    const overProject = Boolean(target && target.closest('.real-art, .next'));
     const overLink = Boolean(target && target.closest('a, button, [role="button"]'));
     cursor.classList.toggle('is-link', overLink && !overProject);
     cursor.classList.toggle('is-hidden', overProject);

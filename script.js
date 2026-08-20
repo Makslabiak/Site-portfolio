@@ -1,5 +1,12 @@
 const root = document.documentElement;
 
+const serviceOrderButton = document.querySelector('.service-button--primary');
+if (serviceOrderButton) {
+  serviceOrderButton.href = 'https://t.me/maxlobyak';
+  serviceOrderButton.target = '_blank';
+  serviceOrderButton.rel = 'noopener noreferrer';
+}
+
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileMenu = document.querySelector('.mobile-menu');
 if (menuToggle && mobileMenu) {
@@ -45,21 +52,21 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.project, .about, .play').forEach((element) => observer.observe(element));
 
 const projects = [
-  ['case-il-sogno.html', 'image/Il Sogno Bianco/Il Sogno Bianco.jpg', 'Il Sogno Bianco', 'Италия · Bridal fashion', 'стратегия, UX/UI, сайт'],
-  ['case-narin.html', 'image/narin/narin.jpg', 'Narin', 'Чехия · Flowers', 'e-commerce, UX/UI, сайт'],
-  ['case-lumo.html', 'image/Lumo store/Lumo store.jpg', 'Lumo Store', 'Англия · Collectible design', 'концепция, UX/UI, сайт'],
-  ['case-pkl.html', 'image/pkl/pkl.jpg', 'По Колькиной Линии', 'Россия · Marketing', 'арт-дирекшн, UX/UI, сайт'],
-  ['case-kyznya.html', 'image/kyznya/kyznya.jpg', 'Кузня', 'Россия · Digital agency', 'концепция, UX/UI, сайт'],
-  ['case-watt.html', 'image/watt game/watt game.jpg', 'Watt', 'Россия · Gamedev', 'стратегия, UX/UI, сайт'],
+  ['case-il-sogno.html', 'https://ilsognobianco.com/', 'image/Il Sogno Bianco/Il Sogno Bianco.jpg', 'Il Sogno Bianco', 'Италия · Bridal fashion', 'стратегия, UX/UI, сайт'],
+  ['case-narin.html', 'https://vezminarin.cz', 'image/narin/narin.jpg', 'Narin', 'Чехия · Flowers', 'e-commerce, UX/UI, сайт'],
+  ['case-lumo.html', 'https://www.behance.net/gallery/222522823/Lumo-store-lamp-decor', 'image/Lumo store/Lumo store.jpg', 'Lumo Store', 'Англия · Collectible design', 'концепция, UX/UI, сайт'],
+  ['case-pkl.html', 'https://pklagency.ru', 'image/pkl/pkl.jpg', 'По Колькиной Линии', 'Россия · Marketing', 'арт-дирекшн, UX/UI, сайт'],
+  ['case-kyznya.html', 'https://kuznyapr.com', 'image/kyznya/kyznya.jpg', 'Кузня', 'Россия · Digital agency', 'концепция, UX/UI, сайт'],
+  ['case-watt.html', 'https://wattstudio.art', 'image/watt game/watt game.jpg', 'Watt', 'Россия · Gamedev', 'стратегия, UX/UI, сайт'],
 ];
 
 const projectGrid = document.querySelector('.projects');
 if (projectGrid) {
-  projectGrid.innerHTML = projects.map(([url, image, title, category, role]) => `
-    <a class="project" href="${url}">
-      <div class="project-art real-art"><img src="${image}" alt="${title}" loading="lazy" decoding="async"></div>
-      <div class="meta"><h3>${title}</h3><span class="project-link">Смотреть сайт ↗</span></div>
-    </a>`).join('');
+  projectGrid.innerHTML = projects.map(([caseUrl, siteUrl, image, title]) => `
+    <div class="project">
+      <a href="${caseUrl}" aria-label="Открыть кейс ${title}"><div class="project-art real-art"><img src="${image}" alt="${title}" loading="lazy" decoding="async"></div></a>
+      <div class="meta"><h3><a href="${caseUrl}">${title}</a></h3><a class="project-link" href="${siteUrl}" target="_blank" rel="noopener noreferrer">Смотреть сайт <span>↗</span></a></div>
+    </div>`).join('');
   projectGrid.querySelectorAll('.project').forEach((element) => observer.observe(element));
 
   if (window.matchMedia('(pointer: fine)').matches) {
@@ -77,6 +84,88 @@ if (projectGrid) {
     });
     projectGrid.addEventListener('pointerleave', () => projectCursor.classList.remove('is-visible'));
   }
+}
+
+const examplesTrigger = document.querySelector('.service-button[href="#work"]');
+if (examplesTrigger) {
+  const exampleProjects = projects.slice(0, 5);
+  const examplesPopup = document.createElement('div');
+  examplesPopup.className = 'examples-popup';
+  examplesPopup.setAttribute('role', 'dialog');
+  examplesPopup.setAttribute('aria-modal', 'true');
+  examplesPopup.setAttribute('aria-label', 'Примеры сайтов');
+  examplesPopup.setAttribute('aria-hidden', 'true');
+  examplesPopup.innerHTML = `
+    <div class="examples-popup__list">
+      <span class="examples-popup__eyebrow">Примеры сайтов</span>
+      <div class="examples-popup__items">
+        ${exampleProjects.map(([, , , title], index) => `
+          <button class="examples-popup__item" type="button" data-example-index="${index}">
+            <span>${String(index + 1).padStart(2, '0')}</span><strong>${title}</strong><i>↗</i>
+          </button>`).join('')}
+      </div>
+    </div>
+    <div class="examples-popup__preview">
+      <img alt="" decoding="async">
+    </div>
+    <button class="examples-popup__close examples-popup__close--top" type="button" aria-label="Закрыть">×</button>
+    <button class="examples-popup__close" type="button" aria-label="Закрыть">×</button>`;
+  document.body.appendChild(examplesPopup);
+
+  exampleProjects.forEach(([, , image]) => {
+    const preload = new Image();
+    preload.src = image;
+  });
+
+  const preview = examplesPopup.querySelector('.examples-popup__preview img');
+  const exampleItems = [...examplesPopup.querySelectorAll('.examples-popup__item')];
+  const closeButton = examplesPopup.querySelector('.examples-popup__close');
+  const closeButtons = examplesPopup.querySelectorAll('.examples-popup__close');
+
+  function selectExample(index) {
+    const [, , image, title] = exampleProjects[index];
+    exampleItems.forEach((item, itemIndex) => item.classList.toggle('is-active', itemIndex === index));
+    preview.classList.add('is-changing');
+    const randomX = 4 + Math.random() * 20;
+    const randomY = 5 + Math.random() * 34;
+    window.setTimeout(() => {
+      preview.src = image;
+      preview.alt = title;
+      preview.style.setProperty('--preview-x', `${randomX}%`);
+      preview.style.setProperty('--preview-y', `${randomY}%`);
+      preview.parentElement.classList.add('has-preview');
+      preview.classList.remove('is-changing');
+    }, 120);
+  }
+
+  function setExamplesPopup(open) {
+    examplesPopup.classList.toggle('is-open', open);
+    examplesPopup.setAttribute('aria-hidden', String(!open));
+    document.documentElement.classList.toggle('examples-open', open);
+    if (open) {
+      exampleItems.forEach((item) => item.classList.remove('is-active'));
+      preview.removeAttribute('src');
+      preview.alt = '';
+      preview.parentElement.classList.remove('has-preview');
+      closeButton.focus();
+    }
+    else examplesTrigger.focus();
+  }
+
+  examplesTrigger.addEventListener('click', (event) => {
+    event.preventDefault();
+    setExamplesPopup(true);
+  });
+  exampleItems.forEach((item) => {
+    const index = Number(item.dataset.exampleIndex);
+    item.addEventListener('mouseenter', () => selectExample(index));
+    item.addEventListener('focus', () => selectExample(index));
+    item.addEventListener('click', () => selectExample(index));
+  });
+  closeButtons.forEach((button) => button.addEventListener('click', () => setExamplesPopup(false)));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && examplesPopup.classList.contains('is-open')) setExamplesPopup(false);
+  });
 }
 
 function startHomeMotion() {
