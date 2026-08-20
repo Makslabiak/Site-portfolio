@@ -157,3 +157,6 @@ html.examples-open,html.examples-open body{overflow:hidden}.examples-popup{posit
 
 /* Independent project website link interaction */
 .project .meta .project-link{gap:5px;margin:-10px 20px -10px -10px;padding:10px;transition:none}.project .meta .project-link span{color:inherit;font-size:inherit;text-transform:none;transition:transform .2s}.project:hover .meta .project-link{transform:none}.project .meta .project-link:hover span{transform:translate(4px,-4px)}.project:has(.project-link:hover) .project-art{transform:none}
+
+/* Hide the native pointer before the deferred custom cursor mounts */
+@media(pointer:fine){html,body,body *{cursor:none!important}}
