@@ -21,7 +21,8 @@
       transition: width .18s ease, height .18s ease, opacity .15s ease;
     }
     .site-cursor-trail { background: #080808; }
-    .site-cursor.is-visible, .site-cursor-trail.is-visible { opacity: 1; }
+    .site-cursor.is-visible { opacity: 1; }
+    .site-cursor-trail.is-visible { opacity: var(--trail-opacity, .35); }
     .site-cursor.is-link { width: 20px; height: 20px; }
     .site-cursor.is-hidden, .site-cursor-trail.is-hidden { opacity: 0 !important; }
   `;
@@ -29,6 +30,7 @@
 
   const cursor = document.createElement('div');
   cursor.className = 'site-cursor';
+  cursor.style.transform = 'translate3d(-80px,-80px,0)';
   document.body.appendChild(cursor);
 
   const count = 9;
@@ -39,7 +41,8 @@
     dot.className = 'site-cursor-trail';
     dot.style.width = `${size}px`;
     dot.style.height = `${size}px`;
-    dot.style.opacity = String(Math.max(0.08, 0.48 - index * 0.045));
+    dot.style.setProperty('--trail-opacity', String(Math.max(0.08, 0.48 - index * 0.045)));
+    dot.style.transform = 'translate3d(-80px,-80px,0)';
     document.body.appendChild(dot);
     dots.push({ element: dot, x: -40, y: -40, halfSize: size / 2 });
   }
