@@ -4,8 +4,6 @@
   if (!window.matchMedia('(pointer: fine)').matches) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  document.documentElement.classList.add('custom-cursor-enabled');
-
   const style = document.createElement('style');
   style.textContent = `
     .custom-cursor-enabled body,
@@ -31,7 +29,6 @@
   const cursor = document.createElement('div');
   cursor.className = 'site-cursor';
   cursor.style.transform = 'translate3d(-80px,-80px,0)';
-  document.body.appendChild(cursor);
 
   const count = 9;
   const dots = [];
@@ -43,13 +40,28 @@
     dot.style.height = `${size}px`;
     dot.style.setProperty('--trail-opacity', String(Math.max(0.08, 0.48 - index * 0.045)));
     dot.style.transform = 'translate3d(-80px,-80px,0)';
-    document.body.appendChild(dot);
     dots.push({ element: dot, x: -40, y: -40, halfSize: size / 2 });
   }
 
   let pointerX = -40;
   let pointerY = -40;
   let visible = false;
+  let mounted = false;
+
+  function mountCursor() {
+    if (mounted) return;
+    mounted = true;
+    cursor.style.left = `${pointerX}px`;
+    cursor.style.top = `${pointerY}px`;
+    cursor.style.transform = 'translate3d(-50%,-50%,0)';
+    dots.forEach((dot) => {
+      dot.x = pointerX;
+      dot.y = pointerY;
+      dot.element.style.transform = `translate3d(${pointerX - dot.halfSize}px, ${pointerY - dot.halfSize}px, 0)`;
+    });
+    document.body.append(cursor, ...dots.map(({ element }) => element));
+    document.documentElement.classList.add('custom-cursor-enabled');
+  }
 
   function setVisible(nextVisible) {
     visible = nextVisible;
@@ -60,7 +72,8 @@
   document.addEventListener('pointermove', (event) => {
     pointerX = event.clientX;
     pointerY = event.clientY;
-    if (!visible) setVisible(true);
+    mountCursor();
+    if (!visible) requestAnimationFrame(() => setVisible(true));
     startRender();
     const target = event.target instanceof Element ? event.target : null;
     const overProject = Boolean(target && target.closest('.real-art, .next'));
@@ -108,7 +121,6 @@
     else startRender();
   });
 
-  startRender();
 })();
 
 (function () {
