@@ -52,12 +52,12 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.project, .about, .play').forEach((element) => observer.observe(element));
 
 const projects = [
-  ['case-il-sogno.html', 'https://ilsognobianco.com/', 'image/Il Sogno Bianco/Il Sogno Bianco.jpg', 'Il Sogno Bianco', 'Италия · Bridal fashion', 'стратегия, UX/UI, сайт'],
-  ['case-narin.html', 'https://vezminarin.cz', 'image/narin/narin.jpg', 'Narin', 'Чехия · Flowers', 'e-commerce, UX/UI, сайт'],
-  ['case-lumo.html', 'https://www.behance.net/gallery/222522823/Lumo-store-lamp-decor', 'image/Lumo store/Lumo store.jpg', 'Lumo Store', 'Англия · Collectible design', 'концепция, UX/UI, сайт'],
-  ['case-pkl.html', 'https://pklagency.ru', 'image/pkl/pkl.jpg', 'По Колькиной Линии', 'Россия · Marketing', 'арт-дирекшн, UX/UI, сайт'],
-  ['case-kyznya.html', 'https://kuznyapr.com', 'image/kyznya/kyznya.jpg', 'Кузня', 'Россия · Digital agency', 'концепция, UX/UI, сайт'],
-  ['case-watt.html', 'https://wattstudio.art', 'image/watt game/watt game.jpg', 'Watt', 'Россия · Gamedev', 'стратегия, UX/UI, сайт'],
+  ['case-il-sogno.html', 'https://ilsognobianco.com/', 'image/Il Sogno Bianco/Il Sogno Bianco.webp', 'Il Sogno Bianco', 'Италия · Bridal fashion', 'стратегия, UX/UI, сайт'],
+  ['case-narin.html', 'https://vezminarin.cz', 'image/narin/narin.webp', 'Narin', 'Чехия · Flowers', 'e-commerce, UX/UI, сайт'],
+  ['case-lumo.html', 'https://www.behance.net/gallery/222522823/Lumo-store-lamp-decor', 'image/Lumo store/Lumo store.webp', 'Lumo Store', 'Англия · Collectible design', 'концепция, UX/UI, сайт'],
+  ['case-pkl.html', 'https://pklagency.ru', 'image/pkl/pkl.webp', 'По Колькиной Линии', 'Россия · Marketing', 'арт-дирекшн, UX/UI, сайт'],
+  ['case-kyznya.html', 'https://kuznyapr.com', 'image/kyznya/kyznya.webp', 'Кузня', 'Россия · Digital agency', 'концепция, UX/UI, сайт'],
+  ['case-watt.html', 'https://wattstudio.art', 'image/watt game/watt game.webp', 'Watt', 'Россия · Gamedev', 'стратегия, UX/UI, сайт'],
 ];
 
 const projectGrid = document.querySelector('.projects');

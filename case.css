@@ -26,7 +26,7 @@ body:has(#screens img[src*="image/watt game/"]) .result blockquote{max-width:105
 .hero-phone__bar-dots{flex:none;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;color:#fff;font-size:9px;letter-spacing:1px}
 @media(max-width:780px){.hero-image{grid-template-columns:1fr;gap:35px}.hero-phone{width:190px;height:390px;border-width:7px;border-radius:27px;justify-self:center}.hero-phone__bar{left:11px;right:11px;bottom:11px;padding:8px 8px 8px 12px;gap:6px}.hero-phone__bar-search{font-size:9.5px}.hero-phone__bar-search svg{width:9px;height:9px}.hero-phone__bar-dots{width:19px;height:19px;font-size:7.5px}.hero-image>img{align-self:center;border-width:7px;border-radius:16px}}
 
-.design-stage .mobile{background:#fff url("image/Il Sogno Bianco/Il Sogno Bianco mob.jpg") top center/cover no-repeat}.design-stage .mobile img{display:none}
+.design-stage .mobile{background:#fff url("image/Il Sogno Bianco/Il Sogno Bianco mob.webp") top center/cover no-repeat}.design-stage .mobile img{display:none}
 
 /* Il Sogno design principles */
 .detail-a>span,.detail-b>span,.detail-c>span{font-size:0}.detail-a>span:after,.detail-b>span:after,.detail-c>span:after{font:10px "DM Sans",Arial,sans-serif;letter-spacing:.08em}.detail-a>span:after{content:"GRID / SWISS SYSTEM"}.detail-b>span:after{content:"IMAGE / ART DIRECTION"}.detail-c>span:after{content:"SIZE / FIT GUIDE"}
