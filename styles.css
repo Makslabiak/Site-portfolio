@@ -160,3 +160,6 @@ html.examples-open,html.examples-open body{overflow:hidden}.examples-popup{posit
 
 /* Hide the native pointer before the deferred custom cursor mounts */
 @media(pointer:fine){html,body,body *{cursor:none!important}}
+
+/* Keep project hover cursors out of paint until their target is hovered */
+.project-cursor{visibility:hidden}.project-cursor.is-visible{visibility:visible}

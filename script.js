@@ -73,6 +73,8 @@ if (projectGrid) {
     const projectCursor = document.createElement('div');
     projectCursor.className = 'project-cursor';
     projectCursor.innerHTML = '<span class="project-cursor__icon">↗</span><span class="project-cursor__label">разбор сайта</span>';
+    projectCursor.style.left = '-200px';
+    projectCursor.style.top = '-200px';
     document.body.appendChild(projectCursor);
 
     projectGrid.addEventListener('pointermove', (event) => {

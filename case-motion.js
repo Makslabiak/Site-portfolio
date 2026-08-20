@@ -34,6 +34,8 @@
     const nextCursor = document.createElement('div');
     nextCursor.className = 'project-cursor next-case-cursor';
     nextCursor.innerHTML = '<span class="project-cursor__icon">↗</span>';
+    nextCursor.style.left = '-200px';
+    nextCursor.style.top = '-200px';
     document.body.appendChild(nextCursor);
 
     nextCase.addEventListener('pointermove', (event) => {
