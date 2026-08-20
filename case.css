@@ -101,7 +101,14 @@ body,main{background:var(--paper)}
 
 @media(max-width:780px){.case-hero h1,.case-hero--compact h1{font-size:55.2px}}
 
-.case-cta>span,.next-arrow{font-family:Arial,sans-serif;font-style:normal}
+.case-cta>span,.next-arrow{display:grid;place-items:center;font-style:normal}.case-cta .arrow-icon{display:block;width:18px;height:18px;object-fit:contain}.next-arrow .arrow-icon{display:block;width:16px;height:16px;object-fit:contain}.case-actions .case-cta .arrow-icon{content:url("image/Arrow white.svg")}
 
-@media(max-width:780px){.case-cta{font-size:19.2px}.case-cta span{font-size:22.8px}}
+@media(max-width:780px){.case-cta{font-size:19.2px}.case-cta span{font-size:22.8px}.case-cta .arrow-icon{width:17px;height:17px}.next-arrow .arrow-icon{width:13px;height:13px}}
+
+/* Unified spacing for text links with arrow icons */
+.case-cta,.next-label,.case-actions .case-cta{gap:11px}
+.arrow-icon{margin-top:2px}
+.next-label{margin-bottom:25px}
+.next-desc{font-size:16px}
+@media(max-width:780px){.arrow-icon,.case-cta .arrow-icon,.next-arrow .arrow-icon,.case-actions .case-cta .arrow-icon{width:14px!important;height:14px!important}}
 .next-case-cursor{z-index:1002;width:150px}

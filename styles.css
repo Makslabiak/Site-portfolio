@@ -183,7 +183,11 @@ html.examples-open,html.examples-open body{overflow:hidden}.examples-popup{posit
 @media(max-width:800px){.hero h1{font-size:55.2px}}
 
 /* Force text presentation for arrows so Safari does not render emoji */
-.project-link>span,.project-cursor__icon,.examples-popup__item i{font-family:Arial,sans-serif;font-style:normal}
+.arrow-icon{display:block;width:14px;height:14px;object-fit:contain}
+.project-link>span,.project-case-link>span,.project-cursor__icon,.examples-popup__item i{display:grid;place-items:center;font-style:normal}
+.project-cursor__icon .arrow-icon{width:30px;height:30px}
+.examples-popup__item .arrow-icon{width:16px;height:16px}
+@media(pointer:fine){.project-cursor__icon .arrow-icon{width:46px;height:46px}}
 
 @media(max-width:800px){.project .meta .project-link{margin:0;padding:10px 0 10px 10px;font-size:17.9px}.project .meta .project-link span{font-size:17.9px}}
 
@@ -222,7 +226,7 @@ html.examples-open,html.examples-open body{overflow:hidden}.examples-popup{posit
   footer>span{margin-bottom:15px}
   .footer-hero>p i{display:inline-block;margin-bottom:30px}
   .footer-hero__contacts{margin-bottom:30px}
-  .footer-bottom .footer-nav{display:flex;width:100%;justify-content:center;gap:6px;padding-bottom:10px;text-align:center}
+  .footer-bottom .footer-nav{display:flex;width:100%;justify-content:center;gap:6px;margin-top:10px;padding-bottom:10px;text-align:center}
   .footer-bottom .footer-nav a{min-width:0;padding:8px 7px}
   .footer-bottom .footer-nav a:last-child{padding-top:8px}
   .footer-bottom .footer-socials{display:grid;width:100%;grid-template-columns:44px 44px;justify-content:center;justify-items:center;align-items:center;gap:10px 12px;margin-right:0;text-align:center}
@@ -239,3 +243,17 @@ html.examples-open,html.examples-open body{overflow:hidden}.examples-popup{posit
   footer .footer-bottom{width:100%;grid-template-columns:minmax(0,1fr);justify-content:stretch;padding-top:16px;column-gap:0;row-gap:18px}
   .footer-bottom .footer-nav,.footer-bottom .footer-socials,.footer-bottom .footer-legal{margin-left:0;margin-right:0}
 }
+
+/* Unified spacing for text links with arrow icons */
+.project-link,.project-case-link,.project-cursor{gap:11px!important}
+.examples-popup__item{gap:11px}
+.arrow-icon{margin-top:2px}
+.project-cursor__icon .arrow-icon{margin-top:2px}
+.footer-hero__contacts{gap:14px}
+@media(max-width:800px){.arrow-icon,.project-cursor__icon .arrow-icon,.examples-popup__item .arrow-icon{width:14px!important;height:14px!important}}
+
+.more-cases{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;text-align:center;margin-top:90px;padding:30px 0 0;border-top:1px solid #aaa}.more-cases>p{margin:0;font:400 34px/1.1 Georgia,"Times New Roman",serif}.more-cases__contacts{display:flex;justify-content:center;gap:14px}.more-cases__icon{display:grid;width:58px;height:58px;place-items:center;border:1px solid rgba(8,8,8,.45);border-radius:50%;transition:background-color .25s,transform .35s cubic-bezier(.22,1,.36,1)}.more-cases__icon img{display:block;width:25px;height:23px;object-fit:contain}.more-cases__icon--telegram img{filter:brightness(0)}.more-cases__icon--whatsapp img{width:25px;height:25px;filter:grayscale(1) brightness(0)}.more-cases__icon:hover{background:var(--acid);transform:translateY(-4px)}
+@media(max-width:800px){.more-cases{margin-top:64px;padding-top:24px}.more-cases>p{max-width:210px;font-size:24px}.more-cases__contacts{gap:10px}.more-cases__icon{width:48px;height:48px}.more-cases__icon img{width:21px;height:20px}.more-cases__icon--whatsapp img{width:21px;height:21px}}
+
+/* Temporarily hidden; markup is preserved */
+.service-row--featured .service-button:not(.service-button--primary){display:none}

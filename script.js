@@ -59,12 +59,12 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.project, .about, .play').forEach((element) => observer.observe(element));
 
 const projects = [
+  ['case-pkl.html', 'https://pklagency.ru', 'image/pkl/pkl.webp', 'По Колькиной Линии', 'Россия · Marketing', 'арт-дирекшн, UX/UI, сайт'],
+  ['case-watt.html', 'https://wattstudio.art', 'image/watt game/watt game.webp', 'Watt', 'Россия · Gamedev', 'стратегия, UX/UI, сайт'],
+  ['case-kyznya.html', 'https://kuznyapr.com', 'image/kyznya/kyznya.webp', 'Кузня', 'Россия · Digital agency', 'концепция, UX/UI, сайт'],
   ['case-il-sogno.html', 'https://ilsognobianco.com/', 'image/Il Sogno Bianco/Il Sogno Bianco.webp', 'Il Sogno Bianco', 'Италия · Bridal fashion', 'стратегия, UX/UI, сайт'],
   ['case-narin.html', 'https://vezminarin.cz', 'image/narin/narin.webp', 'Narin', 'Чехия · Flowers', 'e-commerce, UX/UI, сайт'],
   ['case-lumo.html', 'https://www.behance.net/gallery/222522823/Lumo-store-lamp-decor', 'image/Lumo store/Lumo store.webp', 'Lumo Store', 'Англия · Collectible design', 'концепция, UX/UI, сайт'],
-  ['case-pkl.html', 'https://pklagency.ru', 'image/pkl/pkl.webp', 'По Колькиной Линии', 'Россия · Marketing', 'арт-дирекшн, UX/UI, сайт'],
-  ['case-kyznya.html', 'https://kuznyapr.com', 'image/kyznya/kyznya.webp', 'Кузня', 'Россия · Digital agency', 'концепция, UX/UI, сайт'],
-  ['case-watt.html', 'https://wattstudio.art', 'image/watt game/watt game.webp', 'Watt', 'Россия · Gamedev', 'стратегия, UX/UI, сайт'],
 ];
 
 const projectGrid = document.querySelector('.projects');
@@ -73,14 +73,14 @@ if (projectGrid) {
     <div class="project">
       <h3 class="project-title-mobile"><a href="${caseUrl}">${title}</a></h3>
       <a href="${caseUrl}" aria-label="Открыть кейс ${title}"><div class="project-art real-art"><img src="${image}" alt="${title}" loading="lazy" decoding="async"></div></a>
-      <div class="meta"><h3><a href="${caseUrl}">${title}</a></h3><a class="project-case-link" href="${caseUrl}">Разбор кейса <span>&#x2197;&#xFE0E;</span></a><a class="project-link" href="${siteUrl}" target="_blank" rel="noopener noreferrer">Смотреть сайт <span>&#x2197;&#xFE0E;</span></a></div>
+      <div class="meta"><h3><a href="${caseUrl}">${title}</a></h3><a class="project-case-link" href="${caseUrl}">Разбор кейса <span><img class="arrow-icon" src="image/Arrow black.svg" alt=""></span></a><a class="project-link" href="${siteUrl}" target="_blank" rel="noopener noreferrer">Смотреть сайт <span><img class="arrow-icon" src="image/Arrow black.svg" alt=""></span></a></div>
     </div>`).join('');
   projectGrid.querySelectorAll('.project').forEach((element) => observer.observe(element));
 
   if (window.matchMedia('(pointer: fine)').matches) {
     const projectCursor = document.createElement('div');
     projectCursor.className = 'project-cursor';
-    projectCursor.innerHTML = '<span class="project-cursor__icon">&#x2197;&#xFE0E;</span><span class="project-cursor__label">разбор кейса</span>';
+    projectCursor.innerHTML = '<span class="project-cursor__icon"><img class="arrow-icon" src="image/Arrow black.svg" alt=""></span><span class="project-cursor__label">разбор кейса</span>';
     projectCursor.style.left = '-200px';
     projectCursor.style.top = '-200px';
     document.body.appendChild(projectCursor);
@@ -111,7 +111,7 @@ if (examplesTrigger) {
       <div class="examples-popup__items">
         ${exampleProjects.map(([, , , title], index) => `
           <button class="examples-popup__item" type="button" data-example-index="${index}">
-            <span>${String(index + 1).padStart(2, '0')}</span><strong>${title}</strong><i>&#x2197;&#xFE0E;</i>
+            <span>${String(index + 1).padStart(2, '0')}</span><strong>${title}</strong><i><img class="arrow-icon" src="image/Arrow black.svg" alt=""></i>
           </button>`).join('')}
       </div>
     </div>

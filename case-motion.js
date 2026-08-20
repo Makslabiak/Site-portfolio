@@ -33,7 +33,7 @@
   if (nextCase && window.matchMedia('(pointer: fine)').matches) {
     const nextCursor = document.createElement('div');
     nextCursor.className = 'project-cursor next-case-cursor';
-    nextCursor.innerHTML = '<span class="project-cursor__icon">&#x2197;&#xFE0E;</span>';
+    nextCursor.innerHTML = '<span class="project-cursor__icon"><img class="arrow-icon" src="image/Arrow black.svg" alt=""></span>';
     nextCursor.style.left = '-200px';
     nextCursor.style.top = '-200px';
     document.body.appendChild(nextCursor);
