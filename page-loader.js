@@ -100,7 +100,7 @@
     const destination = new URL(link.href, location.href);
     if (destination.origin !== location.origin) return false;
     if (destination.pathname === location.pathname && destination.search === location.search) return false;
-    return destination.pathname === '/' || /\.html$/i.test(destination.pathname);
+    return destination.pathname === '/' || /^\/case-[a-z0-9-]+$/i.test(destination.pathname);
   }
 
   document.addEventListener('click', (event) => {

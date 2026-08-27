@@ -8,7 +8,7 @@
     caseActions.className = 'case-actions';
     const backToCases = document.createElement('a');
     backToCases.className = 'case-back';
-    backToCases.href = 'index.html#work';
+    backToCases.href = '/#work';
     backToCases.setAttribute('aria-label', 'Вернуться к кейсам');
     backToCases.textContent = '←';
     const floatingCta = caseCta.cloneNode(true);
