@@ -59,12 +59,12 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.project, .about, .play').forEach((element) => observer.observe(element));
 
 const projects = [
-  ['/case-pkl', 'https://pklagency.ru', 'image/pkl/pkl.webp', 'По Колькиной Линии', 'Россия · Marketing', 'арт-дирекшн, UX/UI, сайт'],
-  ['/case-watt', 'https://wattstudio.art', 'image/watt game/watt game.webp', 'Watt', 'Россия · Gamedev', 'стратегия, UX/UI, сайт'],
-  ['/case-kyznya', 'https://kuznyapr.com', 'image/kyznya/kyznya.webp', 'Кузня', 'Россия · Digital agency', 'концепция, UX/UI, сайт'],
-  ['/case-il-sogno', 'https://ilsognobianco.com/', 'image/Il Sogno Bianco/Il Sogno Bianco.webp', 'Il Sogno Bianco', 'Италия · Bridal fashion', 'стратегия, UX/UI, сайт'],
-  ['/case-narin', 'https://vezminarin.cz', 'image/narin/narin.webp', 'Narin', 'Чехия · Flowers', 'e-commerce, UX/UI, сайт'],
-  ['/case-lumo', 'https://www.behance.net/gallery/222522823/Lumo-store-lamp-decor', 'image/Lumo store/Lumo store.webp', 'Lumo Store', 'Англия · Collectible design', 'концепция, UX/UI, сайт'],
+  ['/case-pkl/', 'https://pklagency.ru', 'image/pkl/pkl.webp', 'По Колькиной Линии', 'Россия · Marketing', 'арт-дирекшн, UX/UI, сайт'],
+  ['/case-watt/', 'https://wattstudio.art', 'image/watt game/watt game.webp', 'Watt', 'Россия · Gamedev', 'стратегия, UX/UI, сайт'],
+  ['/case-kyznya/', 'https://kuznyapr.com', 'image/kyznya/kyznya.webp', 'Кузня', 'Россия · Digital agency', 'концепция, UX/UI, сайт'],
+  ['/case-il-sogno/', 'https://ilsognobianco.com/', 'image/Il Sogno Bianco/Il Sogno Bianco.webp', 'Il Sogno Bianco', 'Италия · Bridal fashion', 'стратегия, UX/UI, сайт'],
+  ['/case-narin/', 'https://vezminarin.cz', 'image/narin/narin.webp', 'Narin', 'Чехия · Flowers', 'e-commerce, UX/UI, сайт'],
+  ['/case-lumo/', 'https://www.behance.net/gallery/222522823/Lumo-store-lamp-decor', 'image/Lumo store/Lumo store.webp', 'Lumo Store', 'Англия · Collectible design', 'концепция, UX/UI, сайт'],
 ];
 
 const projectGrid = document.querySelector('.projects');

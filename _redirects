@@ -3,24 +3,14 @@
 /index / 301
 /index/ / 301
 
-# Redirect legacy and trailing-slash case URLs
-/case-il-sogno.html /case-il-sogno 301
-/case-il-sogno/ /case-il-sogno 301
-/case-kyznya.html /case-kyznya 301
-/case-kyznya/ /case-kyznya 301
-/case-lumo.html /case-lumo 301
-/case-lumo/ /case-lumo 301
-/case-narin.html /case-narin 301
-/case-narin/ /case-narin 301
-/case-pkl.html /case-pkl 301
-/case-pkl/ /case-pkl 301
-/case-watt.html /case-watt 301
-/case-watt/ /case-watt 301
+# Legacy flat .html case URLs -> new folder-based clean URLs
+/case-il-sogno.html /case-il-sogno/ 301
+/case-kyznya.html /case-kyznya/ 301
+/case-lumo.html /case-lumo/ 301
+/case-narin.html /case-narin/ 301
+/case-pkl.html /case-pkl/ 301
+/case-watt.html /case-watt/ 301
 
-# Serve static HTML files at canonical clean URLs
-/case-il-sogno /case-il-sogno.html 200
-/case-kyznya /case-kyznya.html 200
-/case-lumo /case-lumo.html 200
-/case-narin /case-narin.html 200
-/case-pkl /case-pkl.html 200
-/case-watt /case-watt.html 200
+# Note: case pages now live at case-*/index.html, so /case-* is served
+# automatically by any standard static file server (Timeweb, Cloudflare
+# Pages, Nginx, Apache) without needing an explicit rewrite rule below.
